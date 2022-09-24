@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Twemoji } from '../../components/twemoji'
-import { Category } from '../../models/categories'
+import { RadioButton } from '../../components/ui/radio'
+import type { Category as CategoryI } from '../../models/categories'
 import { trpc } from '../../utils/trpc'
 
 export const Categories = () => {
@@ -24,24 +25,32 @@ const CategoriesList = () => {
   }
 
   return (
-    <>
+    <div className="flex flex-col p-3 gap-3">
       {categories.map((category) => (
         <Category key={category.name} item={category} />
       ))}
-    </>
+    </div>
   )
 }
 
 interface CategoryProps {
-  item: Category
+  item: CategoryI
 }
 
 const Category: FC<CategoryProps> = ({ item }) => {
   const { name, color, icon, textColor } = item
+
   return (
-    <label className="flex" style={{ backgroundColor: color, color: textColor }}>
-      <p>{name}</p>
-      <Twemoji width={38} height={38} emoji={icon} />
+    <label
+      className="flex items-center justify-between group gap-6 p-3 rounded-lg cursor-pointer"
+      style={{ backgroundColor: color, color: textColor }}
+      htmlFor={color}
+    >
+      <div className="flex grow items-center justify-between text-lg">
+        <p className="font-medium	">{name}</p>
+        <Twemoji width={38} height={38} emoji={icon} />
+      </div>
+      <RadioButton mainColor={textColor} id={color} />
     </label>
   )
 }
