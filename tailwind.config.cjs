@@ -7,6 +7,7 @@ module.exports = {
         bgBlack: '#181818',
         mainGrey: '#212121',
         accent: '#8774E1',
+        noteBg: '#0B0A09',
       },
       transitionProperty: {
         multiple: 'width , height , backgroundColor , border-radius',

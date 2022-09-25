@@ -1,6 +1,3 @@
-export interface Category {
-  name: string
-  icon: string
-  color: string
-  textColor: string
-}
+import { inferQueryOutput } from '../utils/trpc'
+
+export type CategoryFromServer = inferQueryOutput<'categories.getAll'>[0]

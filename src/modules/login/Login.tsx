@@ -8,7 +8,7 @@ export const Login = () => {
         <button
           className="min-w-[300px] bg-indigo-900 hover:bg-indigo-700
           text-white font-bold py-2 px-4 rounded"
-          onClick={() => signIn('discord')}
+          onClick={() => signIn('discord', { callbackUrl: `${window.location.origin}/app` })}
         >
           Discord
         </button>
